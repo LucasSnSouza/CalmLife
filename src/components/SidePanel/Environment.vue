@@ -6,6 +6,7 @@
                 <div>
                     <ButtonBasic
                         class="bg-color-brand-three p-lg rounded-md"
+                        @click="toggleEnvironmentInterface()"
                     >
                         <MiscIcon
                             icon="return"
@@ -71,6 +72,9 @@ export default{
     methods:{
         addEnvironmentSound(sound_data){
             useEnvironmentStore().addEnvironment(sound_data);
+        },
+        toggleEnvironmentInterface(){
+            useEnvironmentStore().toggleEnvironmentInterface()
         }
     }
 }

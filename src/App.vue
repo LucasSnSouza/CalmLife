@@ -44,7 +44,9 @@
             </ButtonBasic>
         </div>
 
-        <SidePanelEnvironment/>
+        <SidePanelEnvironment
+            v-if="getEnvironmentShow"
+        />
 
     </div>
 
@@ -53,7 +55,9 @@
 <script>
 
 import { RouterLink, RouterView } from 'vue-router'
+
 import { useSystemStore } from '@/stores/system.js'
+import { useEnvironmentStore } from '@/stores/environment.js'
 
 import * as Misc from "@/components/Misc"
 import * as SidePanel from "@/components/SidePanel"
@@ -94,6 +98,9 @@ export default {
         }
     },
     computed: {
+        getEnvironmentShow(){
+            return useEnvironmentStore().getEnvironmentShow
+        }
     },
     created(){
     }

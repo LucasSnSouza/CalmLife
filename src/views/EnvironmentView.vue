@@ -10,6 +10,7 @@
         <div>
             <ButtonBasic
                 class="rounded-md p-lg bg-color-brand-three"
+                @click="toggleEnvironmentInterface()"
             >
                 <MiscIcon
                     class="bg-color-brand-one"
@@ -23,7 +24,11 @@
 
         <div class="flex flex-column gap-md">
 
-            <SoundBasic>
+            <SoundBasic
+                v-for="(item, index) in getEnvironmentSounds"
+                @change="(event) => { setVolume(0, event.target.value) }"
+                :index="index"
+            >
             </SoundBasic>
 
         </div>
@@ -59,8 +64,17 @@ export default {
         ...Sound,
     },
     methods: {
+        toggleEnvironmentInterface(){
+            useEnvironmentStore().toggleEnvironmentInterface()
+        },
+        setVolume(index, volume){
+            useEnvironmentStore().setVolume(index, volume)
+        }
     },
     computed: {
+        getEnvironmentSounds(){
+            return useEnvironmentStore().getEnvironmentSounds
+        }
     },
     created(){
     }
