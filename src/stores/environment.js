@@ -28,6 +28,13 @@ export const useEnvironmentStore = defineStore('environment', {
         setVolume(index, volume){
             this.environment_sounds[index].howl.volume(volume / 100)
         },
+        togglePause(index){
+            if (this.environment_sounds[index].howl.playing()) {
+                this.environment_sounds[index].howl.pause()
+            } else {
+                this.environment_sounds[index].howl.play()
+            }
+        },
         toggleEnvironmentInterface(){
             this.environment_show = !this.environment_show
         }

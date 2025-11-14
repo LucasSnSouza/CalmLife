@@ -61,20 +61,25 @@ export default{
                     sound: "calm-rain"
                 },
                 {
-                    title: "Chuva Forte",
-                    icon: "drop",
-                    sound: "heavy-rain"
-                },
-                {
                     title: "Trovões Distantes",
                     icon: "drop",
                     sound: "distant-thunder"
                 },
                 {
-                    title: "Trovões Proximos",
+                    title: "Fogueira",
                     icon: "drop",
-                    sound: "heavy-thunder"
-                }
+                    sound: "campfire"
+                },
+                {
+                    title: "Queda D'Agua",
+                    icon: "drop",
+                    sound: "waterfall"
+                },
+                {
+                    title: "Guerra",
+                    icon: "drop",
+                    sound: "war"
+                },
             ]
         }
     },

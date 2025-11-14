@@ -4,17 +4,25 @@
 
         <ButtonBasic
             class="rounded-md p-lg bg-color-brand-three"
+            @click="$emit('pause'), paused = !paused"
         >
             <MiscIcon
+                v-if="paused"
                 class="bg-color-brand-one"
                 icon="play-fill"
+                :size="[20,20]"
+            />
+            <MiscIcon
+                v-else
+                class="bg-color-brand-one"
+                icon="pause-fill"
                 :size="[20,20]"
             />
         </ButtonBasic>
 
         <div class="sound-basic-information color-brand-two flex flex-column gap-md w-full">
             <h1 class="font-md">{{ title }}</h1>
-            <input class="sound-basic-slide" type="range" min="1" max="100"/>
+            <input class="sound-basic-slide" type="range" min="0" max="100"/>
         </div>
 
     </div>
@@ -29,6 +37,7 @@ import * as Button from "@/components/Button"
 export default {
     data(){
         return{
+            paused: false
         }
     },
     props:{

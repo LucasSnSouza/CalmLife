@@ -28,6 +28,7 @@
                 v-for="(item, index) in getEnvironmentSounds"
                 :title="item.title"
                 @change="(event) => { setVolume(index, event.target.value) }"
+                @pause="togglePause(index)"
                 :index="index"
             >
             </SoundBasic>
@@ -70,6 +71,9 @@ export default {
         },
         setVolume(index, volume){
             useEnvironmentStore().setVolume(index, volume)
+        },
+        togglePause(index){
+            useEnvironmentStore().togglePause(index)
         }
     },
     computed: {
