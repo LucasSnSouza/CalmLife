@@ -2,9 +2,9 @@
 
     <div class="wrapper-app bg-color-brand-one h-full flex flex-column">
         <div class="app-title p-xlg">
-            <div class="flex y-center gap-md">
+            <div class="flex y-end gap-md">
                 <img
-                    style="width: 50px;" 
+                    style="height: 40px;" 
                     src="/public/images/lotus_icon.png"
                 />
                 <h1 class="font-lg">{{ $route.meta?.title }}</h1>
