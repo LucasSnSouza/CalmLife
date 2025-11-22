@@ -159,13 +159,13 @@
      inkscape:label="Camada 1"
      inkscape:groupmode="layer"
      id="layer1"><rect
-       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke-width:0.328544;stroke-linecap:round;stroke-linejoin:round;stroke-dashoffset:1.13386;paint-order:markers fill stroke"
+       style="opacity:1;fill:none;fill-opacity:1;stroke-width:0.328544;stroke-linecap:round;stroke-linejoin:round;stroke-dashoffset:1.13386;paint-order:markers fill stroke"
        id="rect12"
        width="21.776909"
        height="21.776909"
        x="7.1317401"
        y="6.660491"
-       inkscape:export-filename="..\icon-512.png"
+       inkscape:export-filename="lotus_icon.png"
        inkscape:export-xdpi="597.18298"
        inkscape:export-ydpi="597.18298"
        ry="1.3900156" /><g
