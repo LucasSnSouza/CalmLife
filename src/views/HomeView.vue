@@ -1,6 +1,6 @@
 <template>
 
-    <div class="wrapper-homeview h-full font-sm">
+    <div class="wrapper-homeview color-brand-two h-full font-sm">
 
         
 

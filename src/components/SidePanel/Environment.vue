@@ -22,39 +22,28 @@
             </div>
 
             <div 
-                class="grid gap-md"
-                style="
-                    grid-auto-flow: column;
-                    grid-auto-rows: auto;
-                    grid-template-rows: repeat(3, 1fr);
-                "
+                class="flex gap-md scroll-y h-full"
+                style="flex-wrap: wrap;"
             >
                 <ButtonBasic
                     v-for="(item, index) in environment_sounds"
-                    class="sidepanel-environment-button w-full aspect-ratio rounded-md bg-none flex gap-sm relative y-center bg-color-brand-three"
+                    class="sidepanel-environment-button w-full rounded-md bg-none flex gap-sm relative y-center bg-color-brand-three"
+                    :style="`
+                        background-image: url('/images/${item.photo}');
+                        background-size: cover;
+                        background-position: center;
+                    `"
                     :index="index"
                     @click="addEnvironmentSound(item)"
                 >
                     <div 
-                        class="sidepanel-environment-title p-sm absolute color-brand-two bg-color-brand-one rounded-sm"
+                        class="sidepanel-environment-title p-md absolute color-brand-two bg-color-brand-one rounded-sm"
                         style="bottom: var(--scale-brand-md); left: var(--scale-brand-md);"
                     >
                         <p class="font-sm text-start">{{ item?.title }}</p>
                     </div>
                 </ButtonBasic>
             </div>
-
-            <MiscDivision/>
-
-            <ButtonBasic
-                v-for="(item, index) in favorite_sounds_list"
-                class="sidepanel-environment-button w-full rounded-md bg-none flex gap-sm p-lg y-center bg-color-brand-three"
-                :index="index"
-            >
-                <div class="sidepanel-environment-title w-full h-full color-brand-one">
-                    <p class="font-md">{{ item?.name }}</p>
-                </div>
-            </ButtonBasic>
             
         </div>
     </div>
@@ -75,27 +64,27 @@ export default{
             environment_sounds: [
                 {
                     title: "Chuva Fraca",
-                    icon: "drop",
+                    photo: "calm-rain.png",
                     sound: "calm-rain"
                 },
                 {
                     title: "Trovões Distantes",
-                    icon: "thunder",
+                    photo: "thunder-storm.png",
                     sound: "distant-thunder"
                 },
                 {
                     title: "Fogueira",
-                    icon: "fire",
+                    photo: "camp-fire.png",
                     sound: "campfire"
                 },
                 {
                     title: "Queda D'Agua",
-                    icon: "drop",
+                    photo: "water-fall.png",
                     sound: "waterfall"
                 },
                 {
                     title: "Piano",
-                    icon: "piano",
+                    photo: "piano.png",
                     sound: "piano"
                 },
             ],
@@ -126,22 +115,8 @@ export default{
 <style lang="scss">
 
 .sidepanel-environment-wrapper{
-    background: rgba(0, 0, 0, 0.150);
-
-    .sidepanel-environment-button{
-
-        .sidepanel-environment-icon{
-            border-top-left-radius: var(--scale-brand-md);
-            border-bottom-left-radius: var(--scale-brand-md);
-        }
-
-        .sidepanel-environment-title{
-            border-top-right-radius: var(--scale-brand-md);
-            border-bottom-right-radius: var(--scale-brand-md);
-        }
-
-    }
-
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
 }
 
 </style>

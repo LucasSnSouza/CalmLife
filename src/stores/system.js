@@ -10,7 +10,7 @@ export const useSystemStore = defineStore('system', {
         ],
         themes: [
             "",
-            "white"
+            "dark"
         ],
         sidebar: false,
         logged: true,

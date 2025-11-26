@@ -1,7 +1,13 @@
 <template>
 
     <div class="modal-basic-wrapper absolute w-full h-full y-center p-xlg flex">
-        <div class="modal-basic-panel rounded-md">
+        <div class="modal-basic-panel rounded-md hidden">
+            <div 
+                v-if="title"
+                class="bg-color-brand-four p-xlg"
+            >
+                <p class="color-brand-three font-md w-full text-center">{{ title }}</p>
+            </div>
             <div class="modal-basic-informations p-lg">
                 <slot/>
             </div>
@@ -43,6 +49,10 @@ export default{
         ...Button
     },
     props: {
+        title: {
+            type: String,
+            default: null
+        },
         cancelButton: {
             type: String,
             default: null

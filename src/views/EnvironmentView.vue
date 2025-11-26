@@ -1,6 +1,6 @@
 <template>
 
-    <div class="wrapper-homeview h-full font-sm flex flex-column gap-md">
+    <div class="wrapper-homeview color-brand-two h-full font-sm flex flex-column gap-md">
 
         <h1 class="font-md">Sons Ambientes</h1>
         <p class="w-3-4">

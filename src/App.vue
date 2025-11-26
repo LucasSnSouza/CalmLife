@@ -1,6 +1,9 @@
 <template>
 
-    <div class="wrapper-app bg-color-brand-one h-full flex flex-column">
+    <div 
+        class="wrapper-app bg-color-brand-one color-brand-two h-full flex flex-column"
+        :class="getTheme"
+    >
         <div class="app-title p-xlg">
             <div class="flex y-end gap-md">
                 <img
@@ -39,8 +42,18 @@
                 </div>
                 <p 
                     v-if="!item.selected"
-                    class="text-center"
+                    class="text-center color-brand-two"
                 >{{ item?.title }}</p>
+            </ButtonBasic>
+            <ButtonBasic
+                class="flex bg-none x-center y-center flex-column p-lg rounded-md bg-color-brand-three"
+                @click="toggleTheme()"
+            >
+                <MiscIcon
+                    icon="lamp-fill"
+                    class="bg-color-brand-one"
+                    :size="[24,24]"
+                />
             </ButtonBasic>
         </div>
 
@@ -50,6 +63,7 @@
 
         <ModalBasic
             v-if="getFavoriteEnvironmentShow"
+            title="Criar Favorito"
             cancel-button="Cancelar"
             confirm-button="Criar"
             @cancel-action="toggleFavoriteEnvironmentInterface"
@@ -57,7 +71,6 @@
         >
             <div class="flex flex-column gap-lg">
                 <div class="flex flex-column gap-sm">
-                    <h1 class="font-lg">Favoritar</h1>
                     <p class="font-md o-half">Favorite essa lista para que você possa facilmente recarregar a momento.</p>
                 </div>
                 <InputBasic
@@ -131,6 +144,9 @@ export default {
         toggleFavoriteEnvironmentInterface(){
             useEnvironmentStore().toggleFavoriteEnvironmentInterface()
         },
+        toggleTheme(){
+            useSystemStore().toggleTheme()
+        },
         setFavorite(){
             const EnvironmentSoundsSanitized = useEnvironmentStore().getEnvironmentSounds.map(s => {
                 const { howl, ...rest } = s;
@@ -144,7 +160,7 @@ export default {
                 })
             .save()
             this.toggleFavoriteEnvironmentInterface()
-        }
+        },
     },
     computed: {
         getEnvironmentShow(){
@@ -152,6 +168,9 @@ export default {
         },
         getFavoriteEnvironmentShow(){
             return useEnvironmentStore().getFavoriteEnvironmentShow
+        },
+        getTheme(){
+            return useSystemStore().getTheme
         }
     },
     created(){
