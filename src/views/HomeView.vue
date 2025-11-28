@@ -1,21 +1,21 @@
 <template>
 
-    <div class="wrapper-homeview color-brand-two h-full font-sm flex flex-column gap-md">
+    <div class="wrapper-home color-brand-two h-full font-sm flex flex-column gap-lg">
 
-        <div class="color-brand-two flex flex-column gap-sm">
-            <h1 class="font-md">Olá, {{ getDayPeriod() }}</h1>
-            <p class="w-3-4">
+        <div class="color-brand-two flex flex-column y-center">
+            <h1 class="font-md text-center">Olá, {{ getDayPeriod() }}</h1>
+            <p class="w-3-4 text-center">
                 Seja bem vindo a o nosso aplicativo de ajuda geral.
             </p>
         </div>
 
-        <div class="flex gap-sm">
+        <div class="flex gap-lg">
             <ButtonBasic
-                class="rounded-md bg-color-brand-four w-half aspect-ratio color-brand-one p-lg flex flex-column gap-sm justify-between"
+                class="rounded-lg bg-color-brand-four w-half aspect-ratio color-brand-one p-lg flex flex-column gap-sm justify-between"
                 @click="toggleTheme()"
             >
                 <div class="flex">
-                    <div class="color-brand-two ghost rounded-sm p-md">
+                    <div class="color-brand-two ghost rounded-md p-md">
                         <MiscIcon
                             icon="lamp-filled-icon"
                             class="bg-color-brand-two"
@@ -29,11 +29,11 @@
                 </div>
             </ButtonBasic>
             <ButtonBasic
-                class="rounded-md bg-color-brand-four w-half aspect-ratio color-brand-one p-lg flex flex-column gap-sm justify-between"
+                class="rounded-lg bg-color-brand-four w-half aspect-ratio color-brand-one p-lg flex flex-column gap-sm justify-between"
                 @click="toggleTheme()"
             >
                 <div class="flex">
-                    <div class="color-brand-two ghost rounded-sm p-md">
+                    <div class="color-brand-two ghost rounded-md p-md">
                         <MiscIcon
                             icon="translate-filled-icon"
                             class="bg-color-brand-two"
@@ -48,9 +48,18 @@
             </ButtonBasic>
         </div>
 
-        <div class="w-full">
-            <!-- <AdsenseRetangle ad-slot="4058977152"/> -->
+        <div class="flex gap-sm">
+            <ButtonBasic
+                class="rounded-lg bg-color-brand-four w-full color-brand-one p-lg flex gap-md"
+                @click="toggleTheme()"
+            >
+                <div class="color-brand-two text-start">
+                    <h1 class="font-md">Notas</h1>
+                    <p class="font-sm">Crie notas rapidas</p>
+                </div>
+            </ButtonBasic>
         </div>
+        
 
     </div>
 

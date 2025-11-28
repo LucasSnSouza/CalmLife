@@ -1,6 +1,6 @@
 <template>
 
-    <div class="wrapper-homeview color-brand-two h-full font-sm flex flex-column gap-md">
+    <div class="wrapper-environment color-brand-two h-full font-sm flex flex-column gap-md">
 
         <h1 class="font-md">Sons Ambientes</h1>
         <p class="w-3-4">
@@ -9,7 +9,7 @@
 
         <div class="flex gap-md">
             <ButtonBasic
-                class="rounded-md p-md bg-color-brand-four"
+                class="rounded-lg p-md bg-color-brand-four"
                 @click="toggleEnvironmentInterface()"
             >
                 <div class="bg-color-brand-five rounded p-md">
@@ -21,7 +21,7 @@
                 </div>
             </ButtonBasic>
             <ButtonBasic
-                class="rounded-md p-md bg-color-brand-four"
+                class="rounded-lg p-md bg-color-brand-four"
                 @click="toggleFavoriteEnvironmentInterface()"
             >
                 <div class="bg-color-brand-five rounded p-md">
@@ -34,7 +34,7 @@
             </ButtonBasic>
         </div>
 
-        <div class="flex flex-column gap-md scroll-y" style="height: 75%;">
+        <div class="flex flex-column gap-md scroll-y" style="height: 75%; padding-bottom: 60px;">
 
             <!-- <AdsenseRetangle ad-slot="4058977152"/> -->
 

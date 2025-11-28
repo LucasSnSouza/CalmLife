@@ -1,6 +1,6 @@
 <template>
     <div class="sidepanel-environment-wrapper absolute w-full h-full flex x-end">
-        <div class="flex flex-column gap-lg w-3-4 bg-color-brand-one p-xlg">
+        <div class="sidepanel-environment-frame flex flex-column gap-lg w-3-4 bg-color-brand-one p-xlg">
 
             <div class="flex gap-md">
                 <div>
@@ -118,6 +118,12 @@ export default{
 </script>
 
 <style lang="scss">
+
+@media screen and (min-width: 500px) {
+    .sidepanel-environment-frame{
+        width: 100%;
+    }
+}
 
 .sidepanel-environment-wrapper{
     background: rgba(0, 0, 0, 0.5);

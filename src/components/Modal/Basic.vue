@@ -69,7 +69,8 @@ export default{
 <style lang="scss">
 
 .modal-basic-wrapper{
-    background-color: rgba(0, 0, 0, 0.50);
+    background-color: var(--color-brand-five);
+    backdrop-filter: blur(10px);
     z-index: 5;
 }
 

@@ -13,18 +13,19 @@
                 <h1 class="font-lg">{{ $route.meta?.title }}</h1>
             </div>
         </div>
-        <div class="app-information p-xlg h-full hidden" style="padding-bottom: var(--scale-brand-sm);">
+        <div class="app-information p-xlg h-full hidden" style="padding-bottom: 0px;">
             <RouterView/>
         </div>
         <div
-            class="app-navigation flex x-center y-center gap-lg"
+            class="app-navigation absolute w-full flex x-center y-center gap-lg"
+            style="bottom: 0px; left: 0px; backdrop-filter: blur(var(--scale-brand-lg));"
         >
             <ButtonBasic
                 v-for="(item, index) in list_navigation_buttons"
                 class="flex bg-none x-center y-center flex-column p-lg rounded-md"
                 :class="{'o-half': !item.selected}, {'bg-color-brand-three': item.selected}"
                 :index="index"
-                @click="set_navigation_selected(index), $router.push({ path: item.route })"
+                @click="setNavigationSelected(index), $router.push({ path: item.route })"
             >
                 <div>
                     <MiscIcon
@@ -113,6 +114,13 @@ export default {
                     active_icon: "music-fill",
                     selected: false
                 },
+                {
+                    title: "Mercado",
+                    route: "/market",
+                    inactive_icon: "cart",
+                    active_icon: "cart-fill",
+                    selected: false
+                },
             ],
             favorite_text: ""
         }
@@ -125,7 +133,7 @@ export default {
         ...Input
     },
     methods: {
-        set_navigation_selected(selectedIndex){
+        setNavigationSelected(selectedIndex){
             this.list_navigation_buttons = this.list_navigation_buttons.map((button, index) => ({
             ...button,
             selected: index === selectedIndex
@@ -167,6 +175,12 @@ export default {
         if(!Storage.exists("app-favorites")){
             Storage.create("app-favorites").set("items", []).save()
         }
+        if(!Storage.exists("app-notes")){
+            Storage.create("app-notes").set("items", []).save()
+        }
+        if(!Storage.exists("app-market")){
+            Storage.create("app-market").set("items", []).save()
+        }
     }
 }
 
@@ -201,7 +215,7 @@ body{
 }
 
 .app-navigation{
-    padding: 0px var(--scale-brand-xlg) var(--scale-brand-lg) var(--scale-brand-xlg);
+    padding: 0px var(--scale-brand-xlg) 0px var(--scale-brand-xlg);
 }
 
 </style>
