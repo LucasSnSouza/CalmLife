@@ -27,13 +27,13 @@ export default {
         }
     },
     mounted() {
-        const isLocal = location.hostname === "localhost" || location.hostname === "127.0.0.1";
-        if (isLocal) {
-            console.info("AdSense desabilitado no ambiente de desenvolvimento.");
-            return;
-        }
+        // const isLocal = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+        // if (isLocal) {
+        //     console.info("AdSense desabilitado no ambiente de desenvolvimento.");
+        //     return;
+        // }
         try {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
+            (adsbygoogle = window.adsbygoogle || []).push({});
         } catch (e) {
             console.warn("AdSense error:", e);
         }

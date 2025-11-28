@@ -69,7 +69,7 @@ export default{
 <style lang="scss">
 
 .modal-basic-wrapper{
-    background-color: rgba(0, 0, 0, 0.30);
+    background-color: rgba(0, 0, 0, 0.50);
     z-index: 5;
 }
 

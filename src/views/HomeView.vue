@@ -3,7 +3,7 @@
     <div class="wrapper-homeview color-brand-two h-full font-sm flex flex-column gap-md">
 
         <div class="color-brand-two flex flex-column gap-sm">
-            <h1 class="font-md">Olá, bem vindo e {{ getDayPeriod() }}</h1>
+            <h1 class="font-md">Olá, {{ getDayPeriod() }}</h1>
             <p class="w-3-4">
                 Seja bem vindo a o nosso aplicativo de ajuda geral.
             </p>
@@ -49,7 +49,7 @@
         </div>
 
         <div class="w-full">
-            <AdsenseRetangle ad-slot="4058977152"/>
+            <!-- <AdsenseRetangle ad-slot="4058977152"/> -->
         </div>
 
     </div>

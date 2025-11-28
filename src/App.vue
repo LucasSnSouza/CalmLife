@@ -1,7 +1,7 @@
 <template>
 
     <div 
-        class="wrapper-app bg-color-brand-one color-brand-two h-full flex flex-column"
+        class="app bg-color-brand-one color-brand-two w-full h-full flex flex-column relative hidden"
         :class="getTheme"
     >
         <div class="app-title p-xlg">
@@ -173,6 +173,24 @@ export default {
 </script>
 
 <style lang="scss">
+
+body{
+    #app{
+        background: var(--color-brand-four);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .app{
+        width: 500px;
+        height: 90%;
+        border-radius: var(--scale-brand-xlg);
+        box-shadow: 2px 2px 8px #00000011;
+    }    
+}
 
 .app-title{
     padding-bottom: 0px;

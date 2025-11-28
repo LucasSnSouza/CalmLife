@@ -36,6 +36,8 @@
 
         <div class="flex flex-column gap-md scroll-y" style="height: 75%;">
 
+            <!-- <AdsenseRetangle ad-slot="4058977152"/> -->
+
             <SoundBasic
                 v-for="(item, index) in getEnvironmentSounds"
                 :title="item.title"
@@ -60,6 +62,7 @@ import { useEnvironmentStore } from '@/stores/environment.js'
 import * as Misc from "@/components/Misc"
 import * as Button from "@/components/Button"
 import * as Sound from "@/components/Sound"
+import * as AdSense from "@/components/Adsense"
 
 export default {
     data(){
@@ -70,6 +73,7 @@ export default {
         ...Misc,
         ...Button,
         ...Sound,
+        ...AdSense
     },
     methods: {
         toggleEnvironmentInterface(){
