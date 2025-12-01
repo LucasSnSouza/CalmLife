@@ -10,7 +10,7 @@
         <div class="flex gap-lg">
             <ButtonBasic
                 class="rounded-lg bg-color-brand-four w-half aspect-ratio color-brand-one p-lg flex flex-column gap-sm justify-between"
-                @click=""
+                @click="add_item_modal = true"
             >
                 <div class="flex">
                     <div class="color-brand-two ghost rounded-md p-md">
@@ -55,6 +55,31 @@
 
         </div>
 
+        <ModalBasic
+            v-if="add_item_modal"
+            title="Adicionar item a lista"
+            :cancel-button="$tr('modals.cancel')"
+            :confirm-button="$tr('modals.include')"
+            @cancel-action="add_item_modal = false"
+            @confirm-action="addItem(), add_item_modal = false"
+        >
+            <div class="flex flex-column gap-lg">
+                <div class="flex gap-md">
+                    <InputBasic
+                        v-model="item_form['name']"
+                        class="rounded-md p-lg w-full"
+                        input-class="color-brand-two"
+                        style="
+                            border: 1px solid var(--color-brand-three);
+                            box-shadow: 2px 2px 8px #00000011;
+                        "
+                        placeholder="Insira o nome do item"
+                        :value="item_form['name']"
+                    ></InputBasic>
+                </div>
+            </div>
+        </ModalBasic>
+
     </div>
 
 </template>
@@ -66,18 +91,23 @@ import { useEnvironmentStore } from '@/stores/environment.js'
 import * as Misc from "@/components/Misc"
 import * as Button from "@/components/Button"
 import * as Sound from "@/components/Sound"
-import * as AdSense from "@/components/Adsense"
+import * as Modal from "@/components/Modal"
+import * as Input from "@/components/Input"
 
 export default {
     data(){
         return{
+            add_item_modal: false,
+            item_form: {},
+            items_list: []
         }
     },
     components: {
         ...Misc,
         ...Button,
         ...Sound,
-        ...AdSense
+        ...Modal,
+        ...Input
     },
     methods: {
         toggleEnvironmentInterface(){
@@ -86,11 +116,15 @@ export default {
         toggleFavoriteEnvironmentInterface(){
             useEnvironmentStore().toggleFavoriteEnvironmentInterface()
         },
+        togglePause(index){
+            useEnvironmentStore().togglePause(index)
+        },
         setVolume(index, volume){
             useEnvironmentStore().setVolume(index, volume)
         },
-        togglePause(index){
-            useEnvironmentStore().togglePause(index)
+        addItem(){
+            Storage.get('app-notes').push("items", this.item_form).save()
+            this.items_list.push({...this.item_form})
         }
     },
     computed: {

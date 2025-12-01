@@ -92,7 +92,6 @@ import * as Input from "@/components/Input"
 import * as Modal from "@/components/Modal"
 import * as Sound from "@/components/Sound"
 import * as SidePanel from "@/components/SidePanel"
-import * as AdSense from "@/components/Adsense"
 
 export default {
     data(){
@@ -108,7 +107,6 @@ export default {
         ...Input,
         ...Sound,
         ...SidePanel,
-        ...AdSense
     },
     methods: {
         toggleEnvironmentInterface(){

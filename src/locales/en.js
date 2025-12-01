@@ -49,7 +49,9 @@ export default {
         modals: {
             cancel: "Cancel",
             confirm: "Confirm",
-            create: "Create"
+            create: "Create",
+            return: "Return",
+            include: "Include"
         }
     }
 }

@@ -1,7 +1,9 @@
 <template>
     <div class="input-color-wrapper relative">
         <input type="color" class="input-color" v-model="color" @input="$emit('color-action', this.color)"></input>
-        <div class="input-color-preview" :class="this.classPreview" :style="stylePreview"></div>
+        <div class="p-sm color-brand-three ghost rounded-md">
+            <div class="input-color-preview" :class="this.classPreview" :style="stylePreview"></div>
+        </div>
     </div>
 </template>
 
@@ -10,7 +12,7 @@
 export default{
     data(){
         return{
-            color: "#e9f1f8"
+            color: "#000000"
         }
     },
     emits: ['color-action'],

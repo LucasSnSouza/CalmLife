@@ -71,7 +71,6 @@ import { useSystemStore } from '@/stores/system.js'
 
 import * as Misc from "@/components/Misc"
 import * as Button from "@/components/Button"
-import * as AdSense from "@/components/Adsense"
 
 export default {
     data(){
@@ -82,7 +81,6 @@ export default {
     components: {
         ...Misc,
         ...Button,
-        ...AdSense
     },
     methods: {
         getDayPeriod(){

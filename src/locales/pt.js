@@ -49,7 +49,8 @@ export default {
         modals: {
             cancel: "Cancelar",
             confirm: "Confirmar",
-            create: "Criar"
+            create: "Criar",
+            return: "Voltar"
         }
     }
 }

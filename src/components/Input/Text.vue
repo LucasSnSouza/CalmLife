@@ -3,8 +3,9 @@
         class="input-text-basic-wrapper"
         :class="class"
     >
-        <textarea 
+        <textarea
             :class="inputClass"
+            :style="inputStyle"
             :value="value"
             :placeholder="placeholder"
             @input="(data) => { $emit('update:modelValue', data.target.value); }"
@@ -29,6 +30,10 @@ export default{
             default: ""
         },
         inputClass: {
+            type: String,
+            default: ""
+        },
+        inputStyle: {
             type: String,
             default: ""
         },
