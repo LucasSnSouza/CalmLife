@@ -7,6 +7,23 @@
             {{ $tr("market_view.market_description") }}
         </p>
 
+        <div class="flex gap-md bg-color-brand-four rounded-md p-md">
+            <div class="flex gap-md w-full x-end">
+                <div 
+                    class="bg-color-brand-five p-md rounded-md flex flex-column"
+                >
+                    <p class="o-half">Valor da compra</p>
+                    <p>{{ checkoutCount.toFixed(2) }}</p>
+                </div>
+                <div 
+                    class="bg-color-brand-five p-md rounded-md"
+                >
+                    <p class="o-half">Objetos</p>
+                    <p>{{ checkoutAmount }}</p>
+                </div>
+            </div>
+        </div>
+
         <div class="flex gap-md">
             <ButtonBasic
                 class="rounded-lg bg-color-brand-four w-half aspect-ratio color-brand-one p-lg flex flex-column gap-sm justify-between"
@@ -58,15 +75,37 @@
         >
 
             <div
-                v-for="(item, index) in items_list"
+                v-for="(item, index) in getMarketItemsList"
                 class="flex gap-md"
                 :index="index"
             >
                 <ButtonBasic 
-                    class="w-full rounded-md p-lg flex flex-column text-start x-start color-brand-two bg-color-brand-four"
-                    @click="note_preview_form = item, note_preview_modal = true"
+                    class="item-list w-full rounded-md p-lg flex y-center gap-md text-start x-start hidden color-brand-two bg-color-brand-four"
+                    style="height: 64px;"
                 >
-                    <p class="font-md">{{ item.name }}</p>
+                    <div 
+                        class="flex flex-column w-half"
+                        @click="add_item_modal = true, item_form = item, showSuggestions = false"
+                    >
+                        <p class="font-md">{{ item.name }}</p>
+                        <p class="font-sm o-half">{{ item?.description }}</p>
+                    </div>
+                    <div class="flex gap-md w-half x-end">
+                        <div 
+                            v-if="item?.value"
+                            class="bg-color-brand-five p-md rounded-md flex flex-column w-full"
+                        >
+                            <p class="o-half">Valor</p>
+                            <p>{{ item?.value }}</p>
+                        </div>
+                        <div 
+                            v-if="item?.amount"
+                            class="bg-color-brand-five p-md rounded-md flex flex-column w-full"
+                        >
+                            <p class="o-half">Quantidade</p>
+                            <p>{{ item?.amount }}</p>
+                        </div>
+                    </div>
                 </ButtonBasic>
             </div>
 
@@ -77,7 +116,7 @@
             title="Adicionar item a lista"
             :cancel-button="$tr('modals.cancel')"
             :confirm-button="$tr('modals.include')"
-            @cancel-action="add_item_modal = false"
+            @cancel-action="add_item_modal = false, showSuggestions = true, item_form = {}"
             @confirm-action="addItem(), add_item_modal = false, showSuggestions = true, item_form = {}"
         >
             <div class="flex flex-column gap-lg">
@@ -122,7 +161,7 @@
                         placeholder="Quantidade"
                         :value="item_form['amount']"
                     >
-                        <p>Unidade(s)</p>
+                        <p>{{ item_form?.unit?.name }}{{ item_form?.amount > 1 ? "(s)" : "" }}</p>
                     </InputBasic>
                     <InputBasic
                         v-model="item_form['value']"
@@ -141,7 +180,6 @@
                 <InputText
                     v-model="item_form['description']"
                     input-class="color-brand-two"
-                    input-style="height: 60px;"
                     placeholder="Tem observações do produto?"
                     :value="item_form['description']"
                 />
@@ -155,6 +193,7 @@
 <script>
 
 import { useEnvironmentStore } from '@/stores/environment.js'
+import { useMarketStore } from '@/stores/market.js'
 
 import { MarketItems } from '@/assets/market/items.js'
 
@@ -170,7 +209,6 @@ export default {
             showSuggestions: true,
             add_item_modal: false,
             item_form: {},
-            items_list: [],
             item_units: [
                 {
                     text: "UN"
@@ -207,18 +245,35 @@ export default {
             this.showSuggestions = false
         },
         addItem(){
-            this.items_list.push({...this.item_form})
+            useMarketStore().addItem({ ...this.item_form, gotten: false })
         }
     },
     computed: {
         getEnvironmentSounds(){
             return useEnvironmentStore().getEnvironmentSounds
         },
+        getMarketItemsList(){
+            return useMarketStore().getItemsList
+        },
+        checkoutCount() {
+            return this.getMarketItemsList
+                .map(item => {
+                    const value = parseFloat((item.value || "0").replace(',', '.'));
+                    const amount = Number(item.amount) || 0;
+                    return value * amount; 
+                })
+                .reduce((total, num) => total + num, 0);
+        },
+        checkoutAmount(){
+            return this.getMarketItemsList.reduce((soma, item) => {
+                return soma + Number(item.amount);
+            }, 0);
+        },
         filteredItems() {
             if (!this.item_form?.name || !this.showSuggestions) return []
-            const search = this.item_form.name.toLowerCase()
-            return MarketItems.filter(item =>
-            item.name.toLowerCase().startsWith(search)
+                const search = this.item_form.name.toLowerCase()
+                return MarketItems.filter(item =>
+                item.name.toLowerCase().startsWith(search)
             )
         }
     },
@@ -229,11 +284,5 @@ export default {
 </script>
 
 <style lang="scss">
-
-.panel-information{
-
-    height: calc( 100% - 48px );
-
-}
 
 </style>

@@ -6,6 +6,7 @@
         <input 
             :type="type"
             :class="inputClass"
+            :style="inputStyle"
             :disabled="disabled"
             :value="value"
             :placeholder="placeholder"
@@ -29,6 +30,10 @@ export default{
             default: ""
         },
         inputClass: {
+            type: String,
+            default: ""
+        },
+        inputStyle: {
             type: String,
             default: ""
         },
