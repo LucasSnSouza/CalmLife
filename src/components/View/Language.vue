@@ -10,17 +10,17 @@
                     :size="[20,20]"
                 />
             </div>
-            <h1 class="font-md">Escolha seu idioma</h1>
+            <h1 class="font-md">{{ $tr("splash_screen.language.title") }}</h1>
         </div>
 
         <div class="">
-            <p class="font-md o-half">Escolha o idioma de sua preferencia para melhor conforto em nosso App</p>
+            <p class="font-md o-half">{{ $tr("splash_screen.language.description") }}</p>
         </div>
 
         <div class="flex warp gap-md">
             <ButtonBasic
                 v-for="(item, index) in getLanguageList"
-                class="flex y-center rounded-lg p-md bg-color-brand-four gap-lg"
+                class="flex y-center rounded-lg p-md bg-color-brand-four gap-lg color-brand-two"
                 style="height: 56px; padding-right: 16px;"
                 :index="index"
                 @click="setLanguage(item)"

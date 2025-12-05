@@ -10,16 +10,25 @@
                     :size="[20,20]"
                 />
             </div>
-            <h1 class="font-md">Escolha um tema</h1>
+            <h1 class="font-md">{{ $tr("splash_screen.theme.title") }}</h1>
         </div>
 
         <div class="">
-            <p class="font-md o-half">Escolha um dos temas disponiveis para seu melhor conforto em nosso app</p>
+            <p class="font-md o-half">{{ $tr("splash_screen.theme.description") }}</p>
         </div>
 
-        <div class="flex gap-md">
+        <div class="flex gap-lg scroll-x">
 
-            <img src="../../../arts/illustration_theme_dark.png"/>
+            <img 
+                src="/arts/illustration_theme_white.png"
+                class="w-3-4"
+                @click="setTheme('white')"
+            />
+            <img 
+                src="/arts/illustration_theme_dark.png"
+                class="w-3-4"
+                @click="setTheme('dark')"
+            />
 
         </div>
 
@@ -28,6 +37,8 @@
 </template>
 
 <script>
+
+import { useSystemStore } from '@/stores/system.js'
 
 import * as Misc from "@/components/Misc"
 
@@ -40,6 +51,11 @@ export default{
     },
     components:{
         ...Misc
+    },
+    methods:{
+        setTheme(theme){
+            useSystemStore().setTheme(theme)
+        }
     }
 }
 

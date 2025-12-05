@@ -8,8 +8,24 @@ export default {
             shopping: "Compras",
             notes: "Notas"
         },
-        navigation:{
-
+        splash_screen: {
+            language: {
+                title: "Escolha seu idioma",
+                description: "Selecione o idioma de sua preferência para aproveitar o aplicativo com mais conforto."
+            },
+            theme: {
+                title: "Escolha um tema",
+                description: "Selecione um dos temas disponíveis para personalizar a aparência do aplicativo ao seu estilo."
+            },
+            interest: {
+                title: "Escolha seus interesses",
+                description: "Defina quais funcionalidades devem aparecer para você. Essas escolhas podem ser alteradas a qualquer momento.",
+                tips: {
+                    notes: "Notas",
+                    market: "Mercado",
+                    environment: "Sons Ambiente"
+                }
+            }
         },
         home_view: {
             hello: "Olá, ",
