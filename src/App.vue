@@ -13,7 +13,19 @@
                     style="height: 40px;" 
                     src="/public/images/lotus_icon.png"
                 />
-                <h1 class="font-lg">{{ $tr($route.meta?.title || "") }}</h1>
+                <div class="flex flex-column">
+                    <h1 class="font-lg">{{ $tr($route.meta?.title || "") }}</h1>
+                    <p 
+                        class="font-sm rounded-sm bg-color-brand-three color-brand-one"
+                        style="
+                            padding: 2px;
+                            padding-left: var(--scale-brand-lg);
+                            padding-right: var(--scale-brand-lg);
+                        "
+                    >
+                        Versão Livre
+                    </p>
+                </div>
             </div>
         </div>
         <div class="app-information p-xlg h-full hidden" style="padding-bottom: 0px;">
@@ -55,7 +67,7 @@
                 </ButtonBasic>
                 <ButtonBasic
                     class="flex bg-none x-center y-center flex-column p-lg rounded-md"
-                    @click="$router.push({ path: '/home' })"
+                    @click="toggleSidebar()"
                 >
                     <div>
                         <MiscIcon
@@ -104,6 +116,10 @@
             </div>
         </div>
 
+        <SidebarNavigation
+            v-if="getSidebar"
+        />
+
     </div>
 
 </template>
@@ -118,7 +134,7 @@ import { useEnvironmentStore } from '@/stores/environment.js'
 import { Storage } from "@/utils/storage.js"
 
 import * as Misc from "@/components/Misc"
-import * as SidePanel from "@/components/Sidebar"
+import * as Sidebar from "@/components/Sidebar"
 import * as Button from "@/components/Button"
 import * as Modal from "@/components/Modal"
 import * as Input from "@/components/Input"
@@ -132,7 +148,7 @@ export default {
     components: {
         ...Misc,
         ...Button,
-        ...SidePanel,
+        ...Sidebar,
         ...Modal,
         ...Input
     },
@@ -140,13 +156,26 @@ export default {
         toggleTheme(){
             useSystemStore().toggleTheme()
         },
+        toggleSidebar(){
+            useSystemStore().toggleSidebar()
+        }
     },
     computed: {
         getTheme(){
             return useSystemStore().getTheme
+        },
+        getSidebar(){
+            return useSystemStore().getSidebar
         }
     },
     created(){
+        if(!Storage.exists("app-system")){
+            Storage.create("app-system")
+            .set("language", "en")
+            .set("theme", "")
+            .set("resources", [])            
+            .save()
+        }
         if(!Storage.exists("app-favorites")){
             Storage.create("app-favorites").set("items", []).save()
         }
@@ -155,6 +184,13 @@ export default {
         }
         if(!Storage.exists("app-market")){
             Storage.create("app-market").set("items", []).save()
+        }
+
+        if(Storage.exists("app-system")){
+            const AppSystemStorage = Storage.get("app-system").data
+            useSystemStore().setLanguage(AppSystemStorage.language)
+            useSystemStore().setTheme(AppSystemStorage.theme)
+            useSystemStore().setEnabledResources(AppSystemStorage.resources)
         }
     }
 }

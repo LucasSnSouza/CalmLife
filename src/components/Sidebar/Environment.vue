@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar-environment-wrapper absolute w-full h-full flex x-end">
+    <div class="sidepanel-environment-wrapper absolute w-full h-full flex x-end">
         <div class="sidepanel-environment-frame flex flex-column gap-lg w-3-4 bg-color-brand-one p-xlg">
 
             <div class="flex gap-md">
@@ -128,7 +128,7 @@ export default{
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 @media screen and (min-width: 500px) {
     .sidepanel-environment-frame{
@@ -137,8 +137,8 @@ export default{
 }
 
 .sidepanel-environment-wrapper{
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     background-color: var(--color-brand-five);
     backdrop-filter: blur(var(--scale-brand-lg));
     z-index: 5;

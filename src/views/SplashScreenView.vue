@@ -15,6 +15,7 @@
 
         <ViewInterest
             v-if="page == 2"
+            @action="enabled_resources"
         />
 
         <div class="flex w-full p-lg" style="padding-bottom: 0px;">
@@ -47,6 +48,10 @@
 
 <script>
 
+import { useSystemStore } from '@/stores/system.js'
+
+import { Storage } from "@/utils/storage.js"
+
 import * as Misc from "@/components/Misc"
 import * as Button from "@/components/Button"
 import * as View from "@/components/View"
@@ -59,7 +64,8 @@ export default{
                 0,
                 1,
                 2
-            ]
+            ],
+            enabled_resources: []
         }
     },
     components: {
@@ -70,11 +76,21 @@ export default{
     watch: {
         page(value){
             if(value > this.list_pages.length - 1){
+                useSystemStore().setEnabledResources(Storage.get("app-system").data.resources)
                 this.$router.push({ path: '/home' })
             }
         }
     },
     computed: {
+        
+    },
+    created(){
+        if(Storage.exists("app-system")){
+            const AppSystemStorage = Storage.get("app-system").data
+            if(AppSystemStorage.resources.length > 0){
+                this.$router.push({ path: "/home" })
+            }
+        }
     }
 }
 

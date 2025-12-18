@@ -39,6 +39,8 @@
 
 import { useSystemStore } from '@/stores/system.js'
 
+import { Storage } from "@/utils/storage.js"
+
 import * as Button from "@/components/Button"
 import * as Misc from "@/components/Misc"
 
@@ -52,6 +54,13 @@ export default{
     components:{
         ...Misc,
         ...Button
+    },
+    watch: {
+        enabled_resources(value) {
+            Storage.get('app-system')
+            .set("resources", value )
+            .save()
+        }
     },
     computed: {
         getAvaliableResources(){

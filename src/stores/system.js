@@ -1,13 +1,15 @@
 import { defineStore } from "pinia";
 
+import { Storage } from "@/utils/storage.js"
+
 export const useSystemStore = defineStore('system', {
     state: () => ({
         premium: '',
         enabled_resources: [],
         avaliable_resources: [
-            { name: 'splash_screen.interest.tips.notes' },
-            { name: 'splash_screen.interest.tips.market' },
-            { name: 'splash_screen.interest.tips.environment' }
+            { name: "splash_screen.interest.tips.notes", color: "#7e54a5ff", path: "/notes" },
+            { name: "splash_screen.interest.tips.market", color: "#8db847ff", path: "/market" },
+            { name: "splash_screen.interest.tips.environment", color: "#4c82e6ff", path: "/environment" }
         ],
         theme: '',
         language: {label: "English", value: "en"},
@@ -36,12 +38,15 @@ export const useSystemStore = defineStore('system', {
     actions: {
         setEnabledResources(resources_list){
             this.enabled_resources = resources_list
+            Storage.get('app-system').set("resources", resources_list).save()
         },
         setLanguage(language){
             this.language = language;
+            Storage.get('app-system').set("language", language).save()
         },
         setTheme(theme){
             this.theme = theme;
+            Storage.get('app-system').set("theme", theme).save()
         },
         toggleLanguage() {
             let langIndex = this.languages.findIndex(lang => lang.value === this.language.value);

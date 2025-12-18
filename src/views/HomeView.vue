@@ -47,18 +47,6 @@
                 </div>
             </ButtonBasic>
         </div>
-
-        <div class="flex gap-sm">
-            <ButtonBasic
-                class="rounded-lg bg-color-brand-four w-full color-brand-one p-lg flex gap-md"
-                @click="$router.push({ path: '/notes' })"
-            >
-                <div class="color-brand-two text-start">
-                    <h1 class="font-md">{{ $tr("home_view.notes") }}</h1>
-                    <p class="font-sm">{{ $tr("home_view.notes_description") }}</p>
-                </div>
-            </ButtonBasic>
-        </div>
         
 
     </div>
