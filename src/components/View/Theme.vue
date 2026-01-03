@@ -21,12 +21,12 @@
 
             <img 
                 src="/arts/illustration_theme_white.png"
-                class="w-3-4"
-                @click="setTheme('white')"
+                class="w-1-4"
+                @click="setTheme('')"
             />
             <img 
                 src="/arts/illustration_theme_dark.png"
-                class="w-3-4"
+                class="w-1-4"
                 @click="setTheme('dark')"
             />
 

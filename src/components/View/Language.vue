@@ -20,7 +20,8 @@
         <div class="flex warp gap-md">
             <ButtonBasic
                 v-for="(item, index) in getLanguageList"
-                class="flex y-center rounded-lg p-md bg-color-brand-four gap-lg color-brand-two"
+                class="flex y-center rounded-lg p-md gap-lg color-brand-two"
+                :class="getCurrentLanguage.label === item.label ? 'bg-color-brand-three' : 'bg-color-brand-four'"
                 style="height: 56px; padding-right: 16px;"
                 :index="index"
                 @click="setLanguage(item)"
@@ -57,6 +58,9 @@ export default{
     computed: {
         getLanguageList(){
             return useSystemStore().getLanguages
+        },
+        getCurrentLanguage(){
+            return useSystemStore().getCurrentLanguage
         }
     },
     methods: {

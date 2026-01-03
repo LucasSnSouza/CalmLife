@@ -14,6 +14,7 @@
             v-if="options_tab_opened"
             class="input-options absolute"
             :class="inputOptionsClass" 
+            :style="inputOptionsStyle"
         >
             <slot 
                 v-for="(item, index) of items" 
@@ -41,7 +42,11 @@ export default{
         inputOptionsClass:{
             type: String,
             default: ""
-        },  
+        },
+        inputOptionsStyle:{
+            type: String,
+            default: ""
+        },
         placeholder: {
             type: String,
             default: ""

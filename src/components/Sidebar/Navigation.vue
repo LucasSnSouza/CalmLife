@@ -1,7 +1,7 @@
 <template>
     <div class="sidebar-navigation-wrapper flex absolute w-full h-full x-end color-brand-two">
 
-        <div class="bg-color-brand-one w-3-4 h-full scroll-y flex flex-column gap-lg p-xlg">
+        <div class="sidebar-navigation-frame bg-color-brand-one w-3-4 h-full scroll-y flex flex-column gap-lg p-xlg">
 
             <div class="flex gap-md">
                 <div>
@@ -106,6 +106,18 @@ export default{
     background-color: var(--color-brand-five);
     backdrop-filter: blur(var(--scale-brand-lg));
     z-index: 5;
+}
+
+.sidebar-navigation-frame{
+    animation: fade-in 0.5s ease;
+}
+
+@keyframes fade-in {
+    from{
+        width: 0%;
+    }to{
+        width: 75%;
+    }
 }
 
 </style>

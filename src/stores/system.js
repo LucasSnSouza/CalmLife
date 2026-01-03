@@ -8,7 +8,6 @@ export const useSystemStore = defineStore('system', {
         enabled_resources: [],
         avaliable_resources: [
             { name: "splash_screen.interest.tips.notes", color: "#7e54a5ff", path: "/notes" },
-            { name: "splash_screen.interest.tips.market", color: "#8db847ff", path: "/market" },
             { name: "splash_screen.interest.tips.environment", color: "#4c82e6ff", path: "/environment" }
         ],
         theme: '',
